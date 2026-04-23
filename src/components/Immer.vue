@@ -46,7 +46,7 @@ console.log(count.value)
 <template>
 
 <ul>
-    <li v-for="({name,done,difficulty},index) in items" :key="index" :class="{ done ,color:difficulty==='hard'} "
+    <li v-for="({name,done,difficulty},index) in items" :key="index" :class="{ done ,colorhard:!done&&difficulty==='hard',colorsimple:!done&&difficulty==='simple'} "
         @click="change(index)">
         {{ name }}
     </li>
@@ -57,10 +57,13 @@ console.log(count.value)
 
 <style>
 .done {
-  
+  color: black;
   text-decoration: line-through;
 }
-.color {
+.colorhard {
   color: red;
+}
+.colorsimple {
+  color: green;
 }
 </style>
