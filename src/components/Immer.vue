@@ -12,10 +12,14 @@ function change(index) {
     });
 
 }
+const Fruits = ref(['西瓜', '香蕉', '苹果']);
 
 import { ref, computed } from 'vue'
 
 const count = ref(1)
+
+const isChecked = ref([])
+
 
 const alwaysSmall = computed({
   get(previous) {
@@ -52,6 +56,15 @@ console.log(count.value)
     </li>
 </ul>
 
+<label v-for="(fruit, index) in Fruits" :key="index">
+    <input type="checkbox" :value="fruit" v-model="isChecked" />
+    <span :class="{ activate: isChecked.includes(fruit) }">{{ fruit }}</span>
+</label>
+<div>
+  <span>你选择了如下水果：</span>
+  <span v-for="fruit in isChecked" :key="fruit" class="fruit">{{ fruit }}</span>
+</div>
+
 </template>
 
 
@@ -65,5 +78,11 @@ console.log(count.value)
 }
 .colorsimple {
   color: green;
+}
+.activate {
+  color: red;
+}
+.fruit {
+  margin-right: 12px;
 }
 </style>
