@@ -34,6 +34,8 @@ const alwaysSmall = computed({
   }
 })
 
+const awesome = ref(true)
+
 console.log('第一次')
 alwaysSmall.value = 1
 console.log(alwaysSmall.value)
@@ -44,6 +46,44 @@ console.log('第二次')
 alwaysSmall.value = 2
 console.log(alwaysSmall.value)
 console.log(count.value)
+
+import TodoList from './Todo.vue'
+const newTodoText = ref('')
+const todos = ref([
+  {
+    id: 1,
+    title: 'Do the dishes'
+  },
+  {
+    id: 2,
+    title: 'Take out the trash'
+  },
+  {
+    id: 3,
+    title: 'Mow the lawn'
+  }
+])
+
+function AddTodo() {
+  if (newTodoText.value.trim() === '') {
+    return
+  }
+
+  todos.value.push({
+    id: Date.now(),
+    title: newTodoText.value
+  })
+
+  newTodoText.value = ''
+}
+
+function ModifyTodo(todos,index){
+  if (newTodoText.value.trim() === '') {
+    return
+  }
+  todos[index].title=newTodoText.value;
+  newTodoText.value = '';
+}
 
 </script>
 
@@ -63,6 +103,19 @@ console.log(count.value)
 <div>
   <span>你选择了如下水果：</span>
   <span v-for="fruit in isChecked" :key="fruit" class="fruit">{{ fruit }}</span>
+</div>
+
+<button @click="awesome = !awesome">Toggle</button>
+<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-else>Oh no 😢</h1>
+<p>-------------------------To Do List----------------------------</p>
+
+<form @submit.prevent="AddTodo">
+    <input v-model="newTodoText" id="newTodo" placeholder="请输入待办事项" />
+    <button type="submit">添加</button>
+</form>
+<div v-for="(todo ,index) in todos" :key="todo.id">
+    <TodoList :title="todo.title" :id="todo.id" @remove="todos.splice(index, 1)" @update="ModifyTodo(todos,index)"/>
 </div>
 
 </template>

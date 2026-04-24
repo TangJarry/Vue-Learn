@@ -2,6 +2,9 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Immer from './components/Immer.vue';
+import { storeToRefs } from 'pinia'
+import  { useLibraryStore } from './assets/LibraryStore';
+import Library from './components/Library.vue';
 import { ref,reactive } from "vue";
 const objectOfAttrs = reactive({
   id: 'container',
@@ -33,6 +36,8 @@ function Add(){
   <div>
     <button @click="Add">{{count}}</button>  </div>
     <div><Immer /></div>
+    <p>-------------------------To Do List----------------------------</p>
+    <Library />
     
 
 </template>
