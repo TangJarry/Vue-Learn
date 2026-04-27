@@ -1,6 +1,6 @@
 <script setup>
 defineProps(['title'])
-defineEmits(['remove'])
+defineEmits(['remove', 'update'])
 </script>
 
 <template>

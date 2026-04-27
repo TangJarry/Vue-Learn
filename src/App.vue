@@ -1,20 +1,21 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import Immer from './components/Immer.vue';
-import { storeToRefs } from 'pinia'
-import  { useLibraryStore } from './assets/LibraryStore';
-import Library from './components/Library.vue';
-import { ref,reactive } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
+import Immer from "./components/Immer.vue";
+import { storeToRefs } from "pinia";
+import { useLibraryStore } from "./assets/LibraryStore";
+import Library from "./components/Library.vue";
+import Dynamic from "./components/Dynamic.vue";
+import { ref, reactive } from "vue";
 const objectOfAttrs = reactive({
-  id: 'container',
-  class: 'wrapper',
-  style: 'background-color:green'
+  id: "container",
+  class: "wrapper",
+  style: "background-color:green",
 });
-const hahaha = ref('Hello, Vue!');
-hahaha.value = 'Hello, Vue 3!';
-const count=ref(0);
-function Add(){
+const hahaha = ref("Hello, Vue!");
+hahaha.value = "Hello, Vue 3!";
+const count = ref(0);
+function Add() {
   count.value++;
   console.log(count.value);
 }
@@ -22,7 +23,13 @@ function Add(){
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -34,12 +41,19 @@ function Add(){
   </main>
   <div :id="objectOfAttrs" :title="hahaha">{{ objectOfAttrs.id }}</div>
   <div>
-    <button @click="Add">{{count}}</button>  </div>
-    <div><Immer /></div>
-    <p>-------------------------To Do List----------------------------</p>
+    <button @click="Add">{{ count }}</button>
+  </div>
+  <div><Immer /></div>
+  <div>
+    <p>-------------------------Library----------------------------</p>
     <Library />
-    
-
+  </div>
+  <div>
+    <p>
+      -------------------------Dynamic Component----------------------------
+    </p>
+    <Dynamic />
+  </div>
 </template>
 
 <style scoped>
@@ -70,7 +84,3 @@ header {
   }
 }
 </style>
-
-<script setup>
-
-</script>
