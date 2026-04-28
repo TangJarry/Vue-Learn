@@ -43,16 +43,16 @@ function Add() {
   <div>
     <button @click="Add">{{ count }}</button>
   </div>
-  <div><Immer /></div>
+  <div><Immer></Immer>  </div>
   <div>
     <p>-------------------------Library----------------------------</p>
-    <Library />
+    <Library></Library>
   </div>
   <div>
     <p>
       -------------------------Dynamic Component----------------------------
     </p>
-    <Dynamic />
+    <Dynamic></Dynamic>
   </div>
 </template>
 
